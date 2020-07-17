@@ -22,17 +22,14 @@ public class searchCourseServlrt extends HttpServlet {
      if(results != null){
          //输出结果
          if(results != null){
-             out.write("<div class='all'>");
-             out.write("<div><span>课程号</span><span>课程名称</span><span>执教老师</span><span>学分</span></div>");
+             out.write("<table><tr><td>课程号</td><td>课程名</td><td>执教老师</td><td>学分</td>");
              for(Course i:results) {
-                 out.write("<div>");
-                 out.write("<span>"+i.getCno()+"</span>");
-                 out.write("<span>"+i.getCname()+"</span>");
-                 out.write("<span>"+i.getCteacher()+"</span>");
-                 out.write("<span>"+i.getCcredit()+"</span>");
-                 out.write("</div>");
+                 out.write("<tr><td>"+i.getCno()+"</td>");
+                 out.write("<td>"+i.getCname()+"</td>");
+                 out.write("<td>"+i.getCteacher()+"</td>");
+                 out.write("<td>"+i.getCcredit()+"</td></tr>");
              }
-             out.write("</div>");
+             out.write("</table>");
          }
      }
      out.flush();

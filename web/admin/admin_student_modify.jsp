@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
@@ -20,7 +21,7 @@
 			</div>
 			<ul id="cbp-tm-menu" class="cbp-tm-menu nav-menu">
 				<li><a href="admin_course_info.html">管理课程</a></li>
-				<li><a href="admin_student_info.html">管理学生</a></li>
+				<li><a href="${pageContext.request.contextPath}/ListStudentServlet">管理学生</a></li>
 				<li><a href="admin_notice_info.html">管理公告</a></li>
 				<li>
 					<a href="#">赵强</a>
@@ -33,20 +34,36 @@
 		</nav><!-- 导航栏 -->
 
 		<div class="wrap">
-			<form>
-			  <div class="form-group controls">
-			    <input id="" name="" type="text" class="form-control floatLabel">
-			    <label for="">姓名</label>
-			  </div>
+			<form action="${pageContext.request.contextPath}/UpdatedStudentServlet">
+				<div class="form-group controls">
+					<input id="sno" name="sno" value="${student.sno}" type="text" class="form-control floatLabel">
+					<label for="sno">学号</label>
+				</div>
 
-			  <div class="form-group controls">
-			    <input id="" name="" type="text" class="form-control floatLabel">
-			    <label for="">学号</label>
-			  </div>
+				<div class="form-group controls">
+					<input id="sname" name="sname" value="${student.sname}" type="text" class="form-control floatLabel">
+					<label for="sname">姓名</label>
+				</div>
+				<div class="form-group controls">
+					<input id="ssex" name="ssex" value="${student.ssex}" type="text" class="form-control floatLabel">
+					<label for="ssex">性别</label>
+				</div>
+				<div class="form-group controls">
+					<input id="sage" name="sage" value="${student.sage}" type="text" class="form-control floatLabel">
+					<label for="sage">年龄</label>
+				</div>
+				<div class="form-group controls">
+					<input id="syear" name="syear" value="${student.syear}" type="text" class="form-control floatLabel">
+					<label for="syear">年级</label>
+				</div>
+				<div class="form-group controls">
+					<input id="smajor" name="smajor" value="${student.smajor}" type="text" class="form-control floatLabel">
+					<label for="smajor">专业</label>
+				</div>
 
-			  <div class="check">
-			  	<input id=""  name="" type="submit" class="btn" value="确定">
-			  </div>
+				<div class="check">
+					<input type="submit" class="btn" value="确定">
+				</div>
 			</form>
 		</div>
 

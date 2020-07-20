@@ -1,0 +1,152 @@
+*{
+    padding:0;
+    margin:0;
+    font-family: "PingFangSC-Regular","Microsoft Yahei",sans-serif;
+
+}
+body{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #fff;
+}
+
+a{
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+a:hover{
+    font-size: 15px;
+    color: #E0555A;
+}
+
+ul{
+    list-style: none;
+}
+
+ul li{
+    display: inline-block;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    z-index: 30;
+    font-size:15px;
+    line-height: 34px;
+    width: 100%;
+    background-color:#fff;
+    height: 60px;
+}
+
+.title{
+    float: left;
+    text-align: left;
+    font-size:30px;
+    height: 60px;
+    line-height: 60px;
+    margin-left: 1.2em;
+}
+
+header nav{
+    float: right;
+    margin-right: 40px;
+    text-align: center;
+    height: 60px;
+}
+
+.userinfo ul li{
+    margin: 0 15px;
+    float: left;
+    height: 38px;
+    font-size: 20px;
+    line-height: 60px;
+    color:#000;
+}
+
+.userinfo ul li a{
+    color:#000;
+}
+
+.userinfo ul li a:hover{
+    font-size:20px;
+    color: red;
+}
+
+main{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 91%;
+    overflow: hidden;
+    z-index: 1;
+    padding-top:60px ;
+    background:#F2F2F2;
+}
+
+.select{
+    width:200px;
+    height:100%;
+    float: left;
+    z-index: 30;
+}
+
+.select h3{
+    margin-left:50px;
+    margin-top:30px;
+}
+
+/*------------------------------------------------------*/
+
+.accordion {
+    width: 100%;
+    max-width: 360px;
+    margin:10px auto 20px;
+    background: #FFF;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+}
+
+.accordion .link {
+    text-align:center;
+    cursor: pointer;
+    display: block;
+    padding: 15px;
+    color: #4D4D4D;
+    font-size: 15px;
+    font-weight: 700;
+    border-bottom: 1px solid #CCC;
+    position: relative;
+    -webkit-transition: all 0.4s ease;
+    -o-transition: all 0.4s ease;
+    transition: all 0.4s ease;
+}
+
+.accordion li{
+    text-align:center;
+    width:100%;
+}
+
+.accordion li:last-child .link {
+    border-bottom: 0;
+}
+
+.accordion li.open i.select_down {
+    -webkit-transform: rotate(180deg);
+    -ms-transform: rotate(180deg);
+    -o-transform: rotate(180deg);
+    transform: rotate(180deg);
+}
+
+.result{
+    position: absolute;
+    left: 220px;
+    margin:30px 60px 20px;
+    width:75%;
+    height: 560px;
+    background-color:#fff;
+}

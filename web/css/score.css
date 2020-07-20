@@ -1,0 +1,55 @@
+*{
+    padding:0;
+    margin:0;
+    font-family: "PingFangSC-Regular","Microsoft Yahei",sans-serif;
+
+}
+
+body{
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    background-color: #fff;
+}
+
+header{
+    position: absolute;
+    top: 0;
+    z-index: 30;
+    font-size:15px;
+    line-height: 34px;
+    width: 100%;
+    background-color:#fff;
+    height: 60px;
+}
+
+.title{
+    float: left;
+    text-align: left;
+    font-size:30px;
+    height: 60px;
+    line-height: 60px;
+    margin-left: 1.2em;
+}
+
+header nav{
+    float: right;
+    margin-right: 40px;
+    text-align: center;
+    height: 60px;
+}
+.table{
+    border:1px solid black;
+    width: 100%;
+}
+main{
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 90%;
+    overflow: hidden;
+    z-index: 1;
+    padding-top:60px ;
+    background:#F2F2F2;
+}

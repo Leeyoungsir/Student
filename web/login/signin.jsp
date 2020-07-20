@@ -33,6 +33,9 @@
             background-color:#FFFFFF;
             margin: auto;/*设置外边距*/
             border-radius: 8px;
+            border-style:solid;
+            border-color:white red red red;
+            border-width: 1px;
         }
         .Login:before{
             display:block;

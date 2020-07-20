@@ -1,0 +1,305 @@
+/* navigation */
+a{
+	color: #FFF;
+	text-decoration: none;
+}
+
+a:link{
+	color: #FFF;
+	text-decoration: none;
+}
+
+a:visited{
+	color: #FFF;
+	text-decoration: none;
+}
+
+a:hover{
+	color: #FFF;
+	text-decoration: none;
+}
+
+a:focus{
+	outline: none;
+}
+
+body{
+	padding-top: 60px;
+}
+
+table tr th,
+table tr td{
+	text-align: center;
+}
+
+/* Checkbox */
+input[type="checkbox"]:focus{
+	outline: none;
+}
+
+#navigation{
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	height: 60px;
+}
+
+.nav-header{
+	position: absolute;
+	z-index: 1001;
+	top: -10px;
+	left: 95px;
+}
+
+h1.nav-brand{
+	color: #FFF;
+	font-family: "微软雅黑";
+	font-size: 32px;
+	font-weight: bold;
+}
+
+ul.nav-menu{
+	padding-right: 70px;
+	background: #6F5499 -moz-linear-gradient(center top , #6F5499, #563D7C) repeat-x scroll 0% 0%;
+}
+
+ul.nav-menu > li > a{
+	color: #FFF;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	font-weight: bold;
+}
+
+ul.notice-submenu,
+ul.message-submenu,
+ul.user-submenu{
+	border: 1px solid #CCC;
+	box-shadow: 0 0 4px #CCC;
+}
+
+ul.notice-submenu li,
+ul.message-submenu li{
+	display: block;
+	background: #fff;
+	padding-left: 15px;
+	padding-bottom: 7px;
+	font-family: "微软雅黑";
+	font-size: 13px;
+}
+
+ul.user-submenu span{
+	left: 100px;
+}
+
+/* The color of a in submenu */
+.cbp-tm-submenu.user-submenu li a{
+	color: #333;
+}
+
+/* The color of a:hover in menu */
+.no-touch .cbp-tm-menu > li > a:hover,
+.no-touch .cbp-tm-menu > li > a:active {
+	color: #333;
+}
+
+/* The color of a:hover in submenu */
+.no-touch .cbp-tm-submenu > li > a:hover,
+.no-touch .cbp-tm-submenu > li > a:active {
+	color: #fff;
+	background: #6B5094;
+}
+
+/* course */
+.panel-default {
+	margin-top: 15px;
+  border-color: #ddd;
+}
+
+.panel-default > .panel-heading {
+	position: relative;
+  color: #FFF;
+	font-family: "微软雅黑";
+	font-size: 14px;
+  background: #6F5499 -moz-linear-gradient(center top , #6F5499, #563D7C) repeat-x scroll 0% 0%;
+  border-color: #ddd;
+}
+
+.panel-default > .panel-heading a{
+	position: absolute;
+	right: 20px;
+	top: 10px;
+}
+.panel-default > .panel-heading span{
+	margin-right: 5px;
+}
+
+.opration a{
+	color: #644A8C;
+}
+
+.opration a:hover{
+	text-decoration: underline;
+}
+
+/* personal info */
+.item{
+	width: 50%;
+	height: auto;
+	float: left;
+	padding: 5px 5px;
+}
+
+.item-label{
+	color: #A2A2A2;
+	font-family: "微软雅黑";
+	font-weight:500;
+}
+
+.item-value{
+	margin-left: px;
+	color: #333;
+	font-family: "微软雅黑";
+	font-weight: 500;
+}
+
+.item-txt{
+	display: inline-block;
+	width: 150px;
+}
+
+.wrap{
+	width: 300px;;
+	margin: 0 auto;
+	padding: 30px 0 0 0;
+}
+
+/* float label */
+.controls{
+	position: relative;
+}
+
+.controls label {
+  position: absolute;
+	top: 7px;
+  left: 13px;
+  color: #999;
+  font-size: 14px;
+  display: inline-block;
+  font-weight: 400;
+  background-color: rgba(255, 255, 255, 0);
+  pointer-events: none;
+  -moz-transition: color 0.3s, top 0.3s, background-color 0.5s;
+  -o-transition: color 0.3s, top 0.3s, background-color 0.5s;
+  -webkit-transition: color 0.3s, top 0.3s, background-color 0.5s;
+  transition: color 0.3s, top 0.3s, background-color 0.5s;
+}
+
+.controls label.lb-active {
+  top: -12px;
+  color: #5A4181;
+  background-color: #FFF;
+}
+
+/* float notice-date */
+#date-format{
+	position: absolute;
+	-moz-transition: all 0.5s;
+  -o-transition: all 0.5s;
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+}
+
+#date-format.date-format-active{
+	opacity: 0;
+}
+
+/* submit button */
+.check{
+	text-align: center;
+}
+
+.check input{
+	width: 110px;
+	margin-top: 15px;
+	color: #FFF;
+	font-family: "微软雅黑";
+	font-size: 16px;
+	border-radius: 26px;
+	background-color: #63498B;
+}
+
+.check input:hover{
+	color: #FFF;
+}
+
+/* notice */
+.notice{
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.notice li{
+	position: relative;
+	margin-top: 5px;
+	color: #333;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	-webkit-transition: all 0.3s;
+	-moz-transition: all 0.3s;
+	-o-transition: all 0.3s;
+	transition: all 0.3s;
+}
+
+.notice-date{
+	margin-right: 20px;
+	color: #777;
+}
+
+a.notice-modify{
+	position: absolute;
+	right: 0px;
+	color: #644A8C;
+}
+
+a.notice-modify:hover{
+	text-decoration: underline;
+}
+
+.notice li:hover{
+	margin-left: 25px;
+}
+
+.authority input{
+	position: absolute;
+	left: 20px;
+}
+
+.authority label{
+	-webkit-transition: margin 0.3s;
+	-moz-transition: margin 0.3s;
+	-o-transition: margin 0.3s;
+	transition: margin 0.3s;
+}
+
+.authority label:hover{
+	margin-left: 10px;
+	color: #59407F;
+}
+
+#footer{
+	position: fixed;
+	bottom: 0px;
+	width: 100%;
+  margin-top:10px;
+  padding: 15px 0;
+  text-align: center;
+  border-top: 1px solid #e6e6e6; background:#f8f8f8;
+}
+
+#footer li{
+  list-style: none;
+  line-height: 24px;
+  color: #9e9e9e;
+  font-size: 12px;
+}

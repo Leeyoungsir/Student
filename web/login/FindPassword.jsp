@@ -22,7 +22,7 @@
             display: flex;
             justify-content: center;
             align-content: center;
-            background: url("image/2003287.jpg")no-repeat center/cover;
+            background: url("../images/2003287.jpg")no-repeat center/cover;
         }
         .password{
             width: 360px;

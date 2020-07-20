@@ -18,7 +18,7 @@
             display: flex;
             justify-content: center;
             align-content: center;
-            background: url(image/1002025.jpg) no-repeat center/cover;
+            background: url(../images/1002025.jpg) no-repeat center/cover;
         }
         .wrap{
             width: 480px;

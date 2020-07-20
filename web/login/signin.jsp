@@ -25,7 +25,7 @@
             display: flex;
             justify-content: center;
             align-content: center;
-            background: url(image/2002059.jpg) no-repeat center/cover;
+            background: url(../images/2002059.jpg) no-repeat center/cover;
         }
         .Login{
             width: 320px;

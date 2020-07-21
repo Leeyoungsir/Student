@@ -9,22 +9,25 @@
 <html>
 <head>
     <title>成功注册后返回登录界面</title>
-    <style>
-        .style{
-            width: 40%;
-            height: 20%;
-        }
-        a{
-            text-decoration:none;
-            background-color: #E74C3C;
-            font-size: 2em;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/return.css">
 </head>
 <body>
-<div class="style">
-    <marquee><font size=+5 color=red>恭喜您！您已经成功注册账号！！！</font></marquee>
-    <a href ="signin.jsp">返回登录</a>
-</div>
+<script language="javascript">
+    function doReload()
+    {
+        location.href="signin.jsp";
+    }
+    setTimeout("doReload()",3000);
+</script>
+
+<main>
+    <div class="container">
+        <div class="message">
+            <h1 class="h1">注册成功</h1>
+            <h3 class="h3">3秒后返回登录界面......</h3>
+        </div>
+    </div>
+    </div>
+</main>
 </body>
 </html>

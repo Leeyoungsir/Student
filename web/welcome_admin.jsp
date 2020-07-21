@@ -17,7 +17,7 @@
     <div class="title">
         <span>功能主页面</span>
     </div>
-    <nav>merge the incoming changes into the current branch
+    <nav>
         <div class="userinfo">
             <ul>
                 <li>Username</li>

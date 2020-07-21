@@ -1,124 +1,160 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 27785
-  Date: 2020/7/17
-  Time: 12:50
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-<head lang="en">
+<head>
     <meta charset="UTF-8">
     <title>学生登录</title>
     <style>
         *{
             margin: 0;
             padding: 0;
-        }
-        html,body{
-            height: 100%;
-        }
-        a{
-            text-decoration:none;
+            font-family: "PingFangSC-Regular","Microsoft Yahei",sans-serif;
         }
         body{
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            background: url(../images/2002059.jpg) no-repeat center/cover;
+            background-image: url(../images/bg.jpg);
+            background-position: center center;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: cover;
+
         }
-        .Login{
-            width: 320px;
-            height: 420px;
-            background-color:#FFFFFF;
-            margin: auto;/*设置外边距*/
-            border-radius: 8px;
-            border-style:solid;
-            border-color:white red red red;
-            border-width: 1px;
+        ul{
+            list-style: none;
         }
-        .Login:before{
-            display:block;
-            content:  ' ';
+
+        ul li{
+            display: inline-block;
+        }
+
+        header{
+            position: absolute;
+            top: 12px;
+            z-index: 11;
+            font-size:15px;
+            line-height: 34px;
             width: 100%;
-            height: 20px;
-            background-image:-webkit-linear-gradient(left,#27AE60 0%,#27AE60 25%,#8E44AD 25%,#8E44AD 50%,
-            #3498DB 50%,#3498DB 75%, #E74C3C 75%,#E74C3C 100%);
-            border-radius: 6px 6px 0 0;
+        }
+
+        header nav{
+            float: right;
+            margin-right: 40px;
+            text-align: center;
+            line-height: 40px;
+        }
+
+        header nav ul li{
+            margin: 0 15px;
+            float: left;
+            height: 38px;
+        }
+
+        a{
+            color: #fff;
+            text-decoration:none;
+        }
+        a:hover{
+            font-size: 15px;
+            color: #E0555A;
+        }
+        main{
+            display: block;
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+        .container{
+            background: #fff;
+            position: relative;
+            margin: 5em auto 0;
+            height: 482px;
+            width: 760px;
+            box-shadow: 4px 4px 20px rgba(0,0,0,.5);
+        }
+        .login_bg{
+            display: block;
+            height: 100%;
+            width: 100%;
+            line-height: 0;
+            border: 0;
         }
         .title{
             line-height: 80px;
-            color: #27AE60;
+            color: #0f0f0f;
             text-align: center;
             font-size: 2em;
         }
-        .Login-content{
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            align-content: space-around;
-            flex-direction: column;
-            height: 300px;
+        .form{
+            position: absolute;
+            top: 0em;
+            right: 0em;
+            width: 36%;
+            padding: 6em 5em;
+            font-weight: 300;
         }
-        .Login-content input{
-            width: 80%;
-            height: 36px;
-            border:1px solid red;
-            text-indent: 1em;
-            border-raduis: 5px;
-            outline: none;
+        .form h3{
+            font-weight: 600;
+            font-size: 1.5em;
+            margin-bottom: 1.2em;
         }
-        .login-bottom{
-            background-color: red;
-            text-indent: 0;
-            color:#FFFFFF;
+        .form p{
+            display: block;
+            font-size: 1.2em;
+            line-height: 1.2em;
+            margin-bottom: 1.2em;
         }
-        #regist{
-            width: 20%;
-            margin-right:10px;
+        .form input{
+            display: block;
+            border: 1px solid #666;
+            background-color: #fff;
+            height:2.5em;
+            width: 90%;
+            padding: 0.5em 1em;
+            margin-bottom: 1em;
         }
+        #other{
+            color: #0f0f0f;
+            text-align: right;
 
+        }
+        #submit{
+            color: #fff;
+            background-color: #333;
+            border: none;
+            line-height: 1em;
+            padding: 0.5em 0;
+            width: 100%;
+            height: 2.5em;
+            text-align: center;
+            cursor: pointer;
+            margin-top: 1.5em;
+        }
     </style>
-    <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
-    <script>
-        $(document).ready(function () {
-            $("#Button").click(function () {
-                var user=$("#user").val();
-                var pwd=$("#pwd").val();
-                //判断是否为空
-                if(user==''&&pwd==''){
-                    alert("账号和密码不能为空!");
-                }else if(user==''&&pwd!=''){
-                    alert("账号不能为空");
-                }else if(pwd==''&&user!=''){
-                    alert("密码不能为空");
-                }else{
-                    //提交表单
-                    $("form").submit();
-                }
-            });
-        });
-    </script>
+
 </head>
 <body>
-<div class="Login">
-    <%
-        if(request.getParameter("loginInfo") !=null){
-            out.print(request.getParameter("loginInfo"));
-        }
-    %>
-    <h2 class="title">Login</h2>
-    <form class="Login-content" action="${pageContext.request.contextPath}/LoginServlet" method="post">
-        <input type="text" placeholder="请输入用户名" id="user" name="username" class="name">
-        <input type="password" placeholder="请输入密码" id="pwd" name="password" class="pwd">
-       <input value="登录" class="login-bottom" id="Button">
-    </form>
-    <div id="regist">
-        <a  href="${pageContext.request.contextPath}/login/Registered.jsp" >&nbsp;&nbsp;&nbsp;注册</a>
+<header>
+    <nav>
+        <ul>
+            <a href=signin.jsp><li>登录</li></a>
+            <a href="Registered.jsp"><li>注册</li></a>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <img class="login_bg" src="../images/login.png">
+        <form class="form" action="#" method="post">
+            <h3>学生信息管理系统</h3>
+            <input type="text" autofocus="autofocus" name="user" value placeholder="用户名" required="required">
+            <input type="password" name="pwd" value placeholder="密码" required="required">
+            <input type="text" name="code" size="10"value placeholder="验证码" >
+            <img border=0 src="#"><br>
+            <a id="other" href="FindPassword.jsp">忘记密码</a>
+
+            <input id="submit" type="submit" onclick="return check()" value="登录" id="Button">
+        </form>
     </div>
-
-
-<%--    <a id="change-password" href="${pageContext.request.contextPath}/login/FindPassword.jsp">忘记密码？</a>--%>
-</div>
+</main>
 </body>
 </html>

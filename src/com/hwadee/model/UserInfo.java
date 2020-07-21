@@ -10,7 +10,7 @@ public class UserInfo {
     private int id;
     private String username;
     private String password;
-    private String level;
+    private String level; //学生 stu ，管理员admin
     private String sno;
 
     public UserInfo() {

@@ -68,48 +68,16 @@
             border-raduis: 5px;
             outline: none;
         }
-        .Login-content input[type="submit"]{
+        .login-bottom{
             background-color: red;
             text-indent: 0;
             color:#FFFFFF;
         }
-        .YZM{
-            height: 72px;
-            margin: 0 auto;
-            width: 72%;
-            line-height: 10px;
-            position: relative;
-            margin-bottom: 4px;
+        #regist{
+            width: 20%;
+            margin-right:10px;
         }
-        .YZM_code{
-            width: 20px;
-            height: 35%;
-            margin: 0 0 0 2px;
-            border: 0;
-            border-color: transparent;
-            font-size: 16px;
-            padding-left: 0;
-        }
-        .YZM_pic{
-            display: block;
-            width: 30%;
-            height: 50%;
-            background-color: #3498DB;
-            color: #FFFFFF;
-            position: absolute;
-            top: 0;
-            left: 65%;
-            border-right: 5px;
-            text-align: center;
-        }
-        .YZM_error{
-            width: 70%;
-            color: #E74C3C;
-            font-size: 14px;
-            margin: 0 auto;
-            height: 20px;
-            line-height: 20px;
-        }
+
     </style>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
@@ -126,7 +94,7 @@
                     alert("密码不能为空");
                 }else{
                     //提交表单
-                    $("form").subimt();
+                    $("form").submit();
                 }
             });
         });
@@ -134,54 +102,23 @@
 </head>
 <body>
 <div class="Login">
+    <%
+        if(request.getParameter("loginInfo") !=null){
+            out.print(request.getParameter("loginInfo"));
+        }
+    %>
     <h2 class="title">Login</h2>
-    <form class="Login-content" action="#" method="post">
-        <input type="text" placeholder="请输入用户名" id="user" naame="user" class="name">
-        <input type="password" placeholder="请输入密码" id="pwd" name="pwd" class="pwd">
-        <p class="YZM">
-            <input type="text" name="code" placeholder="请输入验证码" id="YZM_Input" class="YZM_code">
-            &nbsp;&nbsp;&nbsp;<span id="code" class="YZM_pic" title="看不清，换一张!"></span>
-        </p>
-        <p class="YZM_error" id="errorTips">
-        </p>
-       <input type="submit" onclick="return check()" value="登录" id="Button">
+    <form class="Login-content" action="${pageContext.request.contextPath}/LoginServlet" method="post">
+        <input type="text" placeholder="请输入用户名" id="user" name="username" class="name">
+        <input type="password" placeholder="请输入密码" id="pwd" name="password" class="pwd">
+       <input value="登录" class="login-bottom" id="Button">
     </form>
-    <a href="Registered.jsp" >&nbsp;&nbsp;&nbsp;注册</a>
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-    <a href="FindPassword.jsp">忘记密码？</a>
+    <div id="regist">
+        <a  href="${pageContext.request.contextPath}/login/Registered.jsp" >&nbsp;&nbsp;&nbsp;注册</a>
+    </div>
+
+
+<%--    <a id="change-password" href="${pageContext.request.contextPath}/login/FindPassword.jsp">忘记密码？</a>--%>
 </div>
-<script>
-    document.getElementById("code").onclick=changelmg;
-    function changelmg() {
-        var array=new Array(
-            '1','2','3','4','5','6','7','8','9','0','a','b','c','d','e','f','g','h',
-            'i','j','k','l','m','n','o','p','q','r','s','t','u','v','w','x','y','z',
-            'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P','Q','R','S'
-            ,'T','U','V','W','S','Y','Z'
-        );
-        code=""
-        //随机获得四个验证码
-        for(var i=0;i<4;i++){
-            var r=parseInt(Math.random()*array.length);
-            code+=array[r];
-        }
-        document.getElementById("code").innerHTML=code;
-    }
-    //验证验证码
-    function check() {
-        var error;
-        var codeInput=document.getElementById("YZM-Input").value;
-        if(codeInput.toLowerCase()==code.toLowerCase()){
-            console.log("123");
-            return true;
-        }else{
-            error='验证码错误，请重新输入！';
-            document.getElementById("errorTips").innerHTML=error;
-            return false;
-        }
-    }
-</script>
 </body>
 </html>

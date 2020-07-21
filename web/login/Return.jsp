@@ -24,7 +24,7 @@
 <body>
 <div class="style">
     <marquee><font size=+5 color=red>恭喜您！您已经成功注册账号！！！</font></marquee>
-    <a href ="Login.jsp">返回登录</a>
+    <a href ="signin.jsp">返回登录</a>
 </div>
 </body>
 </html>

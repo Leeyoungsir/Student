@@ -52,11 +52,28 @@
     </style>
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
+        function formatDateTime() {
+            var date = new Date();
+            var y = date.getFullYear();
+            var m = date.getMonth();
+            var d = date.getDate();
+            d = d < 10 ? ('0' + d) : d;
+            var h = date.getHours();
+            var minute = date.getMinutes();
+            var second = date.getSeconds();
+            return y + m + d + h + minute + second;
+        }
         $(document).ready(function () {
             $("#check").click(function () {
                 var name=$("#name").val();
                 var pwd=$("#pwd").val();
                 var pwd1=$("#pwd1").val();
+                var uuid = formatDateTime() + Math.random()*10000;
+                uuid = parseInt(uuid);
+                $("#Uid").val(uuid);
+                var u=$("#Uid").val();
+                console.log(uuid);
+                console.log(u);
                 //判断是否为空
                 if(name==''&&pwd==''){
                     alert("用户名和密码不能为空!");
@@ -68,8 +85,9 @@
                 else if(pwd!=pwd1) {
                     alert("两次密码不一致");
                 }else{
+                    console.log("ok")
                     //提交表单
-                    $("form").subimt();
+                    $("form").submit();
                 }
             });
         });
@@ -78,62 +96,14 @@
 <body>
 <div class="wrap">
     <h1 class="title">用户注册界面</h1>
-    <form class="Registered-content" action="###" method="post">
+    <form class="Registered-content" action="${pageContext.request.contextPath}/RegisterServlet" method="post">
+        <input id="Uid" type="hidden" name="id">
         <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名: <input id="name" type="text" name="username"/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码: <input id="pwd" type="password"  name="pwd"/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学号: <input id="id" type="text" name="id" /></p>
-        <p>确认密码: <input id="pwd1" type="password" name="pwd1"/></p>
-        <p>电子邮件: <input id="e-mail" type="text"  name="e-mail"/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;性别：<label><input name="Fruit" type="radio" value="" checked />保密 </label>
-            <label><input name="Fruit" type="radio" value="" />男</label>
-            <label><input name="Fruit" type="radio" value="" />女 </label>
-        </p>
-        <p>生日：<select name="select" class="xla_k">
-            <option value="请选择">请选择</option>
-            <option value="2015">2015</option>
-            <option value="2016">2016</option>
-            <option value="2017">2017</option>
-            <option value="2018">2018</option>
-            <option value="2019">2019</option>
-            <option value="2020">2020</option>
-        </select>年
-            <select name="select"  class="xla_k">
-                <option value="请选择">请选择</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-                <option value="9">9</option>
-                <option value="10">10</option>
-                <option value="11">11</option>
-                <option value="12">122</option>
-            </select>月
-            <select name="select"  class="xla_k">
-                <option value="请选择">请选择</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-                <option value="6">6</option><option value="17">17</option>
-                <option value="7">7</option>
-                <option value="8">8</option>
-            </select>日
-        </p>
-        </p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;爱好：<input type=checkbox checked> 读书
-        <input type=checkbox>旅游
-        <input type=checkbox value=1>足球
-        <input type=checkbox value=1>篮球
-        <input type=checkbox value=1>乒乓球
-        <input type=checkbox value=1>其他
-        </p>
-        <p>个人说明：<textarea name="yj" cols="30" rows="6"></textarea>
-        </p>
-       <p><input type="button" value="提交" id="check"></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码: <input id="pwd" type="password"  name="password"/></p>
+        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学号: <input id="id" type="text" name="sno" /></p>
+        <p>确认密码: <input id="pwd1" type="password"/></p>
+
+        <p><input type="button" value="提交" id="check"></input></p>
     </form>
 </div>
 </body>

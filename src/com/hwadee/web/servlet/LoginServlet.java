@@ -43,7 +43,7 @@ public class LoginServlet extends HttpServlet {
             session.setAttribute("user", user);//左边为名字，右边为值
             //管理员学生管理页面
             if("admin".equals(user.getLevel() )){
-                response.sendRedirect(request.getContextPath()+"/welcome_admin.jsp");
+                response.sendRedirect(request.getContextPath()+"/admin/admin_index.jsp");
             }
             //学生选课界面
             if("stu".equals(user.getLevel())){

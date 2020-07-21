@@ -21,7 +21,7 @@ public class RegisterService {
 
 //    public static void main(String[] args) {
 //
-//        UserInfo user = new UserInfo(01, "xuexizhang", "1234","stu","s01");
+//        UserInfo user = new UserInfo(231, "1231231", "1234","stu","");
 //        RegisterService rs = new RegisterService();
 //        System.out.println(user);
 //        if(rs.register(user)){
@@ -31,5 +31,5 @@ public class RegisterService {
 //        }
 //
 //    }
-
+//
 }

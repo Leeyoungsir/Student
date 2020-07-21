@@ -11,7 +11,7 @@
     <title>Title</title>
 </head>
 <body>
-<p> 登入失败！！请检查账号和密码</p>
+<p> 登入失败！！请重新输入账号、密码</p>
 <p><a href="${pageContext.request.contextPath}/login/signin.jsp">重新登入</a></p>
 </body>
 </html>

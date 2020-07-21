@@ -27,7 +27,7 @@ public class RegisterDao {
             return null;
         }
     }
-
+    //判断是学号是存在
     public Student isStudent(UserInfo user){
         String sql = "select * from student where sno=?";
         try {

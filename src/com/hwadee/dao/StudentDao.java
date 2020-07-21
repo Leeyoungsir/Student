@@ -3,6 +3,7 @@ package com.hwadee.dao;
 import com.hwadee.model.Student;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  *  LH
@@ -19,7 +20,7 @@ public interface StudentDao {
      * 返回记录总条数
      * @return
      */
-    int FindTotalCount();
+    int FindTotalCount(Map<String,String[]> conditionMap);
 
     /**
      * 分页查询，从start开始，共row条记录
@@ -27,7 +28,7 @@ public interface StudentDao {
      * @param rows
      * @return
      */
-    List FindByPage(int start, int rows);
+    List FindByPage(int start, int rows,Map<String,String[]> conditionMap);
 
     /**
      * 根据学号删除学生
@@ -42,4 +43,11 @@ public interface StudentDao {
      * @param student
      */
     void update(Student student);
+
+    /**
+     * 根据班级号查询班级人数
+     * @param c_no
+     * @return
+     */
+    int findByC_no(String c_no);
 }

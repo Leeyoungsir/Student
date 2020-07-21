@@ -1,4 +1,5 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
@@ -13,39 +14,26 @@
 		<script src="../js/modernizr.custom.js"></script>
 	</head>
 	<body>
-		<!-- 导航栏 -->
-		<nav id="navigation">
-			<div class="nav-header">
-				<h1 class="nav-brand"><a href="#">学生成绩管理系统</a></h1>
-			</div>
-			<ul id="cbp-tm-menu" class="cbp-tm-menu nav-menu">
-				<li><a href="admin_course_info.html">管理课程</a></li>
-				<li><a href="admin_student_info.jsp">管理学生</a></li>
-				<li><a href="admin_notice_info.html">管理公告</a></li>
-				<li>
-					<a href="#">赵强</a>
-					<ul class="cbp-tm-submenu user-submenu">
-						<li><a href="#">个人信息<span class="glyphicon glyphicon-user"></span></a></li>
-						<li><a href="#">修改密码<span class="glyphicon glyphicon-lock"></span></a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav><!-- 导航栏 -->
+		<%@include file="admin_navigator.jsp"%>
 
 		<div class="wrap">
-			<form>
+			<form action="${pageContext.request.contextPath}/AddClassServlet">
 			  <div class="form-group controls">
-			    <input id="" name="date" type="text" class="form-control floatLabel">
-			    <label for="">发布日期<span id="date-format">(例:2015-1-1)</span></label>
+			    <input id="c_no" name="c_no" type="text" class="form-control floatLabel">
+			    <label for="c_no">班级号</label>
 			  </div>
 
 			  <div class="form-group controls">
-			    <textarea id="" name="" class="form-control floatLabel"></textarea>
-			    <label for="">公告内容</label>
+			    <input id="c_name" name="c_name" class="form-control floatLabel"></input>
+			    <label for="c_name">班级名</label>
 			  </div>
+				<div class="form-group controls">
+					<input id="dno" name="dno" class="form-control floatLabel"></input>
+					<label for="dno">院系号</label>
+				</div>
 
 			  <div class="check">
-			  	<input id=""  name="" type="submit" class="btn" value="确定">
+			  	<input  type="submit" class="btn" value="确定">
 			  </div>
 			</form>
 		</div>

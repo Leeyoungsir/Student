@@ -1,51 +1,43 @@
-<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8" language="java" isELIgnored="false" %>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html lang="en" class="no-js">
 	<head>
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>修改公告</title>
+		<title>添加课程</title>
 		<meta name="description" content="Blueprint: Tooltip Menu" />
 		<meta name="keywords" content="Tooltip Menu, navigation, tooltip, menu, css, web development, template" />
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="../css/component.css" />
-		<link rel="stylesheet" type="text/css" href="../css/admin.css" />
+		<link rel="stylesheet" type="text/css" href="../css/admin.css">
 		<script src="../js/modernizr.custom.js"></script>
 	</head>
 	<body>
-		<!-- 导航栏 -->
-		<nav id="navigation">
-			<div class="nav-header">
-				<h1 class="nav-brand"><a href="#">学生成绩管理系统</a></h1>
-			</div>
-			<ul id="cbp-tm-menu" class="cbp-tm-menu nav-menu">
-				<li><a href="admin_course_info.html">管理课程</a></li>
-				<li><a href="admin_student_info.jsp">管理学生</a></li>
-				<li><a href="admin_notice_info.html">管理公告</a></li>
-				<li>
-					<a href="#">赵强</a>
-					<ul class="cbp-tm-submenu user-submenu">
-						<li><a href="#">个人信息<span class="glyphicon glyphicon-user"></span></a></li>
-						<li><a href="#">修改密码<span class="glyphicon glyphicon-lock"></span></a></li>
-					</ul>
-				</li>
-			</ul>
-		</nav><!-- 导航栏 -->
+		<%@include file="admin_navigator.jsp"%>
 
 		<div class="wrap">
-			<form>
+			<form action="${pageContext.request.contextPath}/addCourseServlet">
+				<div class="form-group controls">
+					<input id="cno" name="cno" type="text" class="form-control floatLabel">
+					<label for="cno">课程号</label>
+				</div>
 			  <div class="form-group controls">
-			    <input id="" name="date" type="text" class="form-control floatLabel">
-			    <label for="">发布日期<span id="date-format">(例:2015-1-1)</span></label>
+			    <input id="cname" name="cname" type="text" class="form-control floatLabel">
+			    <label for="cname">课程名称</label>
 			  </div>
 
 			  <div class="form-group controls">
-			    <textarea id="" name="" class="form-control floatLabel"></textarea>
-			    <label for="">公告内容</label>
+			    <input id="cteacher" name="cteacher" type="text" class="form-control floatLabel">
+			    <label for="cteacher">任课教师</label>
 			  </div>
+				<div class="form-group controls">
+					<input id="ccredit" name="ccredit" type="text" class="form-control floatLabel">
+					<label for="ccredit">学分</label>
+				</div>
 
 			  <div class="check">
-			  	<input id=""  name="" type="submit" class="btn" value="确定">
+			  	<input type="submit" class="btn" value="确定">
 			  </div>
 			</form>
 		</div>
@@ -57,7 +49,8 @@
 		<script src="../js/cbpTooltipMenu.min.js"></script>
 		<script>
 			var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
-
+		</script>
+		<script>
 			$(document).ready(function(){
       	checkValue();
         floatLabel('.floatLabel');
@@ -68,17 +61,11 @@
         $(inputType).each(function () {
           var $this = $(this);
           $this.focus(function () {
-            if($this.attr("name")=="date"){
-            	$this.next().addClass('lb-active');
-            	$("#date-format").addClass('date-format-active');
-            }else{
-            	$this.next().addClass('lb-active');
-            }
+              $this.next().addClass('lb-active');
           });
           $this.blur(function () {
               if ($this.val() === '' || $this.val() === 'blank') {
                   $this.next().removeClass();
-                  $("#date-format").removeClass();
               }
           });
         });
@@ -89,12 +76,7 @@
       	$("input").each(function(){
           var $this=$(this);
           if($this.val()!=""){
-          	if($this.attr("name")=="date"){
-          		$this.next().addClass('lb-active');
-            	$("#date-format").addClass('date-format-active');
-          	}else{
-          		$this.next().addClass('lb-active');
-          	}
+            $this.next().addClass('lb-active');
           }
         });
       }

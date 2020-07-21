@@ -1,8 +1,11 @@
 package com.hwadee.web.servlet;
 
+import com.hwadee.model.Class;
 import com.hwadee.model.PageBean;
 import com.hwadee.model.Student;
+import com.hwadee.service.ClassService;
 import com.hwadee.service.StudentService;
+import com.hwadee.service.impl.ClassServiceImpl;
 import com.hwadee.service.impl.StudentServiceImpl;
 
 import javax.servlet.ServletException;
@@ -15,11 +18,11 @@ import java.util.Map;
 
 /**
  * @Author LH
- * @Description 学生列表servlet
- * @Date Create in 15:57 2020/7/20
+ * @Description 班级列表servlet
+ * @Date Create in 9:34 2020/7/21
  */
-@WebServlet("/ListStudentServlet")
-public class ListStudentServlet extends HttpServlet {
+@WebServlet("/ListClassServlet")
+public class ListClassServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String currentpage = request.getParameter("currentpage");//当前页码
         String rows = request.getParameter("rows");//每页显示的条数
@@ -33,13 +36,10 @@ public class ListStudentServlet extends HttpServlet {
         {
             rows="10";
         }
-        StudentService service=new StudentServiceImpl();
-        PageBean<Student> pageBean = service.findByPage(Integer.parseInt(currentpage), Integer.parseInt(rows),conditionMap);
+        ClassService service=new ClassServiceImpl();
+        PageBean<Class> pageBean = service.findByPage(Integer.parseInt(currentpage), Integer.parseInt(rows));
         request.setAttribute("pageBean",pageBean);
-        request.setAttribute("conditionMap",conditionMap);
-        System.out.println(pageBean);
-        System.out.println(conditionMap);
-        request.getRequestDispatcher("/admin/admin_student_info.jsp").forward(request, response);
+        request.getRequestDispatcher("/admin/admin_class_info.jsp").forward(request, response);
 
     }
 

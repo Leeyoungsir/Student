@@ -17,12 +17,11 @@
     <div class="title">
         <span>功能主页面</span>
     </div>
-    <nav>
+    <nav>merge the incoming changes into the current branch
         <div class="userinfo">
             <ul>
                 <li>Username</li>
                 <li>退出登录</li>
-                <li>返回首页</li>
             </ul>
         </div>
     </nav>

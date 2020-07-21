@@ -11,6 +11,7 @@ public class Class implements Serializable {
     private String c_no;//班级号
     private String c_name;//班级名
     private String dno;//所属院系
+    private int member;//班级人数
 
     public Class(String c_no, String c_name, String dno) {
         this.c_no = c_no;
@@ -19,6 +20,14 @@ public class Class implements Serializable {
     }
 
     public Class() {
+    }
+
+    public int getMember() {
+        return member;
+    }
+
+    public void setMember(int member) {
+        this.member = member;
     }
 
     public String getC_no() {

@@ -17,9 +17,30 @@
 		<%@include file="admin_navigator.jsp"%>>
 
 		<div class="container-fluid">
+			<div style="align-content: center">
+				<form action="${pageContext.request.contextPath}/ListStudentServlet" method="post" class="form-inline">
+					<div class="form-group">
+						<label for="find_name">姓名：</label>
+						<input type="text" value="${conditionMap.sname[0]}" id="find_name" name="sname" class="form-control">
+					</div>
+					<div class="form-group">
+						<label for="find_age">年龄：</label>
+						<input type="text" value="${conditionMap.sage[0]}" id="find_age" name="sage" class="form-control" >
+					</div>
+					<div class="form-group">
+						<label for="find_major">专业：</label>
+						<input type="text" value="${condiyionMap.smajor[0]}" id="find_major" name="smajor" class="form-control" >
+					</div>
+					<div class="form-group">
+						<label for="find_c_no">班号：</label>
+						<input type="text" value="${condiyionMap.c_no[0]}" id="find_c_no" name="c_no" class="form-control" >
+					</div>
+					<button type="submit" class="btn btn-primary">查询</button>
+				</form>
+			</div>
 			<div class="panel panel-default">
-			  <div class="panel-heading">
-			  	学生列表<a href="/admin/admin_student_add.jsp"><span class="glyphicon glyphicon-plus"></span>添加学生</a>
+			  <div class="panel-heading" style="color: #0f0f0f">
+			  	学生列表<a style="color: #0f0f0f"  href="/admin/admin_student_add.jsp"><span class="glyphicon glyphicon-plus"></span>添加学生</a>
 			  </div>
 			  <div class="panel-body">
 			    <table class="table table-bordered table-hover">
@@ -30,6 +51,7 @@
 			    		<th>年龄</th>
 			    		<th>年级</th>
 			    		<th>专业</th>
+						<th>班号</th>
 			    		<th>修改</th>
 			    		<th>删除</th>
 			    	</tr>
@@ -41,6 +63,7 @@
 							<td>${student.sage}</td>
 							<td>${student.syear}</td>
 							<td>${student.smajor}</td>
+							<td>${student.c_no}</td>
 							<td class="opration"><a href="${pageContext.request.contextPath}/UpdateStudentServlet?sno=${student.sno}"><span class="glyphicon glyphicon-wrench"></span></a></td>
 							<td class="opration"><a href="${pageContext.request.contextPath}/DeleteStudentServlet?sno=${student.sno}"><span class="glyphicon glyphicon-remove"></span></a></td>
 						</tr>
@@ -56,17 +79,17 @@
 
 							  </c:if>
 
-							  <a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${pageBean.currentPage-1}&rows=10" aria-label="Previous">
+							  <a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${pageBean.currentPage-1}&rows=10&sname=${conditionMap.sname[0]}&sage=${conditionMap.sage[0]}&smajor=${conditionMap.smajor[0]}&c_no=${conditionMap.c_no[0]}" aria-label="Previous">
 								  <span aria-hidden="true">&laquo;</span>
 							  </a>
 
 						  </li>
 						  <c:forEach begin="1" end="${pageBean.totalPage}" var="i">
 							  <c:if test="${pageBean.currentPage==i}">
-								  <li class="active"><a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${i}&rows=10">${i}</a></li>
+								  <li class="active"><a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${i}&rows=10&sname=${conditionMap.sname[0]}&sage=${conditionMap.sage[0]}&smajor=${conditionMap.smajor[0]}&c_no=${conditionMap.c_no[0]}">${i}</a></li>
 							  </c:if>
 							  <c:if test="${pageBean.currentPage!=i}">
-								  <li ><a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${i}&rows=10">${i}</a></li>
+								  <li ><a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${i}&rows=10&sname=${conditionMap.sname[0]}&sage=${conditionMap.sage[0]}&smajor=${conditionMap.smajor[0]}&c_no=${conditionMap.c_no[0]}">${i}</a></li>
 							  </c:if>
 
 						  </c:forEach>
@@ -77,7 +100,7 @@
 							  <c:if test="${pageBean.currentPage!=pageBean.totalPage}">
 						  <li >
 							  </c:if>
-							  <a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${pageBean.currentPage==pageBean.totalPage? pageBean.currentPage:pageBean.currentPage+1}&rows=10" aria-label="Previous">
+							  <a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${pageBean.currentPage==pageBean.totalPage? pageBean.currentPage:pageBean.currentPage+1}&rows=10&sname=${conditionMap.sname[0]}&sage=${conditionMap.sage[0]}&smajor=${conditionMap.smajor[0]}&c_no=${conditionMap.c_no[0]}" aria-label="Previous">
 								  <span aria-hidden="true">&raquo;</span>
 							  </a>
 

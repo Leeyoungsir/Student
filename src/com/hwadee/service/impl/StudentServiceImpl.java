@@ -7,6 +7,7 @@ import com.hwadee.model.Student;
 import com.hwadee.service.StudentService;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @Author LH
@@ -29,14 +30,14 @@ public class StudentServiceImpl implements StudentService {
      * 分页查询
      */
     @Override
-    public PageBean<Student> findByPage(int currentPage, int rows) {
+    public PageBean<Student> findByPage(int currentPage, int rows, Map<String,String[]> conditionMap) {
         PageBean<Student> userPageBean=new PageBean<Student>();
-        int totalcount=studentDao.FindTotalCount();
+        int totalcount=studentDao.FindTotalCount(conditionMap);
         userPageBean.setCurrentPage(currentPage);
         userPageBean.setRows(rows);
         userPageBean.setTotalCount(totalcount);
         int start=(currentPage-1)*rows;
-        List list = studentDao.FindByPage(start, rows);
+        List list = studentDao.FindByPage(start, rows,conditionMap);
         userPageBean.setList(list);
         int totalpage=(totalcount%rows)==0 ? (totalcount/rows):(totalcount/rows)+1;
         userPageBean.setTotalPage(totalpage);

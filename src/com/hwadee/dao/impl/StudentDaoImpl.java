@@ -6,7 +6,10 @@ import com.hwadee.utils.JDBCUtils;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public class StudentDaoImpl implements StudentDao {
     JdbcTemplate template=new JdbcTemplate(JDBCUtils.getDataSource());
@@ -22,16 +25,34 @@ public class StudentDaoImpl implements StudentDao {
 
     }
 
+
     /**
      * 返回记录总条数
      *
+     * @param conditionMap
      * @return
      */
     @Override
-    public int FindTotalCount() {
-        String sql="select count(*) from student";
-        Integer integer = template.queryForObject(sql, int.class);
-        return integer;
+    public int FindTotalCount(Map<String, String[]> conditionMap) {
+        String sql="select count(*) from student where 1=1 ";
+        StringBuffer sb=new StringBuffer(sql);
+        //定义参数集合
+        ArrayList<Object> params=new ArrayList<>();
+        Set<String> keys=conditionMap.keySet();
+        for (String key : keys) {
+            String value=conditionMap.get(key)[0];
+            if("currentPage".equalsIgnoreCase(key) || "rows".equalsIgnoreCase(key))
+            {
+                continue;
+            }
+            if(value!=null && !"".equals(value))
+            {
+                //有值
+                sb.append( " and " + key + " like ? ");
+                params.add("%"+value+"%");//获取条件的参数
+            }
+        }
+        return template.queryForObject(sb.toString(),Integer.class,params.toArray());
     }
 
     /**
@@ -42,9 +63,30 @@ public class StudentDaoImpl implements StudentDao {
      * @return
      */
     @Override
-    public List FindByPage(int start, int rows) {
-        String sql="select * from Student limit ?,? ";
-        List<Student> list = template.query(sql, new BeanPropertyRowMapper<Student>(Student.class),start,rows);
+    public List FindByPage(int start, int rows,Map<String,String[]> conditionMap) {
+        String sql="select * from student where 1 = 1";
+        StringBuffer sb=new StringBuffer(sql);
+        //定义参数集合
+        ArrayList<Object> params=new ArrayList<Object>();
+        Set<String> keys = conditionMap.keySet();
+        for (String key : keys) {
+            String value = conditionMap.get(key)[0];
+            if("currentPage".equalsIgnoreCase(key) || "rows".equalsIgnoreCase(key))
+            {
+                continue;
+            }
+            if(value!=null && !"".equals(value))
+            {
+                //有值
+                sb.append( " and " + key + " like ? ");
+                params.add("%"+value+"%");//获取条件的参数
+            }
+        }
+        sb.append(" limit ? , ?");
+        params.add(start);
+        params.add(rows);
+        sql=sb.toString();
+        List<Student> list = template.query(sql, new BeanPropertyRowMapper<Student>(Student.class),params.toArray());
         return list;
     }
 
@@ -59,6 +101,11 @@ public class StudentDaoImpl implements StudentDao {
         template.update(sql,parseInt);
     }
 
+    /**
+     * 根据学号查询学生
+     * @param sno
+     * @return
+     */
     @Override
     public Student findBySno(int sno) {
         String sql="select * from student where sno = ?";
@@ -73,7 +120,20 @@ public class StudentDaoImpl implements StudentDao {
      */
     @Override
     public void update(Student student) {
-        String sql="update student set sname=?,ssex=?,sage=?,syear=?,smajor=? where sno=?";
-        template.update(sql,student.getSname(),student.getSsex(),student.getSage(),student.getSyear(),student.getSmajor(),student.getSno());
+        String sql="update student set sname=?,ssex=?,sage=?,syear=?,smajor=?,c_no=? where sno=?";
+        template.update(sql,student.getSname(),student.getSsex(),student.getSage(),student.getSyear(),student.getSmajor(),student.getC_no(),student.getSno());
+    }
+
+    /**
+     * 根据班级号查询班级人数
+     *
+     * @param c_no
+     * @return
+     */
+    @Override
+    public int findByC_no(String c_no) {
+        String sql="select count(*) from student where c_no=?";
+        Integer integer = template.queryForObject(sql, Integer.class,c_no);
+        return integer;
     }
 }

@@ -19,7 +19,7 @@
 		<div class="container-fluid">
 			<div class="panel panel-default">
 				<div class="panel-heading" style="color: #0f0f0f">
-					班级列表<a style="color: black"  href="/admin/admin_class_add.jsp"><span class="glyphicon glyphicon-plus"></span>添加班级</a>
+					班级列表<a style="color: black"  href="${pageContext.request.contextPath}/admin/admin_class_add.jsp"><span class="glyphicon glyphicon-plus"></span>添加班级</a>
 				</div>
 				<div class="panel-body">
 					<table class="table table-bordered table-hover">

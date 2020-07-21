@@ -40,7 +40,7 @@
 			</div>
 			<div class="panel panel-default">
 			  <div class="panel-heading" style="color: #0f0f0f">
-			  	学生列表<a style="color: #0f0f0f"  href="/admin/admin_student_add.jsp"><span class="glyphicon glyphicon-plus"></span>添加学生</a>
+			  	学生列表<a style="color: #0f0f0f"  href="${pageContext.request.contextPath}/admin/admin_student_add.jsp"><span class="glyphicon glyphicon-plus"></span>添加学生</a>
 			  </div>
 			  <div class="panel-body">
 			    <table class="table table-bordered table-hover">

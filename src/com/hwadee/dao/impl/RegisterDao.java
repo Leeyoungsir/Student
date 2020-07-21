@@ -29,7 +29,7 @@ public class RegisterDao {
     }
 
     public Student isStudent(UserInfo user){
-        String sql = "select * from user where sno=?";
+        String sql = "select * from student where sno=?";
         try {
             Student rstudent = jdbcTemplate.queryForObject(sql, new BeanPropertyRowMapper<>(Student.class), user.getSno());
             return rstudent;

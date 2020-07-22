@@ -23,7 +23,7 @@ public class UpdateStudentServlet extends HttpServlet {
         StudentService service=new StudentServiceImpl();
         Student student = service.findBySno(sno);
         request.setAttribute("student",student);
-        System.out.println(student);
+//        System.out.println(student);
         request.getRequestDispatcher("/admin/admin_student_modify.jsp").forward(request, response);
     }
 

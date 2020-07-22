@@ -13,7 +13,7 @@ public interface AdminCourseService {
      * 添加课程
      * @param course
      */
-    void add(Course course);
+    boolean add(Course course);
 
     /**
      * 分页查询

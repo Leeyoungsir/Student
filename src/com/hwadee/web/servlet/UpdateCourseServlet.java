@@ -26,7 +26,7 @@ public class UpdateCourseServlet extends HttpServlet {
         AdminCourseService service=new AdminCourseServiceImpl();
         Course course = service.findByCno(cno);
         request.setAttribute("course",course);
-        System.out.println(course);
+//        System.out.println(course);
         request.getRequestDispatcher("/admin/admin_course_modify.jsp").forward(request, response);
     }
 

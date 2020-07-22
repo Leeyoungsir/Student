@@ -50,7 +50,14 @@ public class ClassServiceImpl implements ClassService {
      * @param c
      */
     @Override
-    public void add(Class c) {
-        classDao.add(c);
+    public boolean add(Class c) {
+        Class byC_no = classDao.findByC_no(c.getC_no());
+        if (byC_no==null){
+            classDao.add(c);
+        }else {
+            return false;
+        }
+        return true;
+
     }
 }

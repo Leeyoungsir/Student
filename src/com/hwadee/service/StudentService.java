@@ -15,7 +15,7 @@ public interface StudentService {
      * 添加学生信息
      * @param student
      */
-    void add(Student student);
+    boolean add(Student student);
 
     /**
      * 分页查询

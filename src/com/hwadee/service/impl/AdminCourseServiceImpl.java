@@ -21,8 +21,15 @@ public class AdminCourseServiceImpl implements AdminCourseService {
      * @param course
      */
     @Override
-    public void add(Course course) {
-        adminCourseDao.add(course);
+    public boolean add(Course course) {
+        Course byCno = adminCourseDao.findByCno(course.getCno());
+        if (byCno==null){
+            adminCourseDao.add(course);
+        }else {
+            return false;
+        }
+        return true;
+
     }
 
     /**

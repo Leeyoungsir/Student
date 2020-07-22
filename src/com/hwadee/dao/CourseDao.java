@@ -1,6 +1,7 @@
 package com.hwadee.dao;
 
 
+import com.hwadee.model.Course;
 import com.hwadee.model.Sc;
 
 import java.util.List;
@@ -21,21 +22,40 @@ public interface  CourseDao {
   * 查询记录条数
   * @return
   */
- int FindTotalCount();
+ int FindTotalCount(String sno);
 
  /**
   * 退课
-  * @param sc
+  * @param cno
+  * @param sno
   */
- void deleteCourse(Sc sc);
+ void deleteCourse(String cno,String sno);
 
  /**
   * 选课
-  * @param sc
+  * @param cno
+  * @param sno
   */
- void addCourse(Sc sc);
+ void addCourse(String cno,String sno);
 
+ /**
+  * 根据学生的学号查询选修的课程号
+  * @param sno
+  * @return
+  */
+ List<Course> findBySno(String sno);
 
+ /**
+  * 查询该学生未选修的课程
+  * @param cnos
+  * @return
+  */
+ List<Course> findNotSelectCourse(List<String> cnos);
 
-
+ /**
+  * 没有选修课程的数量
+  * @param sno
+  * @return
+  */
+ int FindNotSelectCount(String sno);
 }

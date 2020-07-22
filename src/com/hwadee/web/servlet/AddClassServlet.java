@@ -35,9 +35,13 @@ public class AddClassServlet extends HttpServlet {
             e.printStackTrace();
         }
         ClassService service=new ClassServiceImpl();
-        service.add(c);
+        boolean isAdd=service.add(c);
 //        System.out.println("添加成功");
-        response.sendRedirect(request.getContextPath()+"/ListClassServlet");
+       if (isAdd){
+           response.sendRedirect(request.getContextPath()+"/ListClassServlet");
+       }else {
+           response.sendRedirect(request.getContextPath()+"/admin/admin_add_failed.jsp?aId=3");
+       }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

@@ -1,28 +1,28 @@
 package com.hwadee.model;
 
-
-import java.io.Serializable;
-
 /**
- * 课程实体类
+ * @Author LH
+ * @Description 成绩单
+ * @Date Create in 14:16 2020/7/22
  */
-public class Course implements Serializable {
-
-
+public class Score {
     private String cno;//课程号
     private String cname;//课程名称
     private String cteacher;//执教老师
     private int Ccredit;//学分
+    private double score;//分数
+    private String status;//状态
 
-
-    public Course() {
-    }
-
-    public Course(String cno, String cname, String cteacher, int ccredit) {
+    public Score(String cno, String cname, String cteacher, int ccredit, double score) {
         this.cno = cno;
         this.cname = cname;
         this.cteacher = cteacher;
         Ccredit = ccredit;
+        this.score = score;
+        this.status = "正常";
+    }
+
+    public Score() {
     }
 
     public String getCno() {
@@ -57,13 +57,31 @@ public class Course implements Serializable {
         Ccredit = ccredit;
     }
 
+    public double getScore() {
+        return score;
+    }
+
+    public void setScore(double score) {
+        this.score = score;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
     @Override
     public String toString() {
-        return "Course{" +
+        return "Score{" +
                 "cno='" + cno + '\'' +
                 ", cname='" + cname + '\'' +
                 ", cteacher='" + cteacher + '\'' +
                 ", Ccredit=" + Ccredit +
+                ", score=" + score +
+                ", status='" + status + '\'' +
                 '}';
     }
 }

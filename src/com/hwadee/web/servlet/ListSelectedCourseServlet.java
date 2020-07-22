@@ -6,8 +6,10 @@ package com.hwadee.web.servlet;
  * Date : 2020/7/21 20:13
  */
 
+import com.hwadee.model.Course;
 import com.hwadee.model.PageBean;
 import com.hwadee.model.Sc;
+import com.hwadee.model.UserInfo;
 import com.hwadee.service.CourseService;
 import com.hwadee.service.impl.CourseServiceImpl;
 
@@ -17,19 +19,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.Map;
 
 /**
  * 学生课程列表
  */
-@WebServlet("/ListStuCourseServlet")
-public class ListStuCourseServlet extends HttpServlet {
+@WebServlet("/ListSelectedCourseServlet")
+public class ListSelectedCourseServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String currentpage = request.getParameter("currentpage");//当前页码
         String rows = request.getParameter("rows");//每页显示的条数
-        String sno=request.getParameter("sno");//学生学号
-        Map<String, String[]> conditionMap = request.getParameterMap();//条件查询的键值对
+        HttpSession session = request.getSession();
+        UserInfo user = (UserInfo) session.getAttribute("user");
+        String sno="001";
+        if (user!=null){
+            sno = user.getSno();//学号
+        }
         if(currentpage==null || "".equals(currentpage) || Integer.parseInt(currentpage)<=0)
         {
             currentpage="1";
@@ -40,12 +47,10 @@ public class ListStuCourseServlet extends HttpServlet {
             rows="10";
         }
         CourseService service=new CourseServiceImpl();
-        PageBean<Sc> pageBean = service.findByPage(Integer.parseInt(currentpage), Integer.parseInt(rows),sno);
+        PageBean<Course> pageBean = service.findSelectedCourse(Integer.parseInt(currentpage), Integer.parseInt(rows),sno);
         request.setAttribute("pageBean",pageBean);
-        request.setAttribute("conditionMap",conditionMap);
-        System.out.println(pageBean);
-        System.out.println(conditionMap);
-        request.getRequestDispatcher("/user/user_course_info.jsp").forward(request, response);
+//        System.out.println(pageBean);
+        request.getRequestDispatcher("/student/selectedCourse.jsp").forward(request, response);
 
     }
 

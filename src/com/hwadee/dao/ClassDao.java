@@ -27,4 +27,11 @@ public interface ClassDao {
      * @param c
      */
     void add(Class c);
+
+    /**
+     * 根据班级号查询班级
+     * @param c_no
+     * @return
+     */
+    Class findByC_no(String c_no);
 }

@@ -50,4 +50,17 @@ public class ClassDaoImpl implements ClassDao {
         String sql="insert into class values(?,?,?)";
         template.update(sql,c.getC_no(),c.getC_name(),c.getDno());
     }
+
+    /**
+     * 根据班级号查询班级
+     *
+     * @param c_no
+     * @return
+     */
+    @Override
+    public Class findByC_no(String c_no) {
+        String sql="select * from class where c_no=?";
+        Class aClass = template.queryForObject(sql, new BeanPropertyRowMapper<Class>(Class.class), c_no);
+        return aClass;
+    }
 }

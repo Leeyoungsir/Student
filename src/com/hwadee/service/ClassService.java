@@ -23,5 +23,5 @@ public interface ClassService {
      * 添加班级
      * @param c
      */
-    void add(Class c);
+    boolean add(Class c);
 }

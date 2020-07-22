@@ -11,19 +11,6 @@ public class PageBean<T> {
     List<T> list;//每页的数据list集合
     int currentPage;//当前页面
     int rows;//每页显示的条数
-    String sno;//
-
-    @Override
-    public String toString() {
-        return "PageBean{" +
-                "totalCount=" + totalCount +
-                ", totalPage=" + totalPage +
-                ", list=" + list +
-                ", currentPage=" + currentPage +
-                ", rows=" + rows +
-                ", sno='" + sno + '\'' +
-                '}';
-    }
 
     public int getTotalCount() {
         return totalCount;
@@ -65,11 +52,14 @@ public class PageBean<T> {
         this.rows = rows;
     }
 
-    public String getSno() {
-        return sno;
-    }
-
-    public void setSno(String sno) {
-        this.sno = sno;
+    @Override
+    public String toString() {
+        return "PageBean{" +
+                "totalCount=" + totalCount +
+                ", totalPage=" + totalPage +
+                ", list=" + list +
+                ", currentPage=" + currentPage +
+                ", rows=" + rows +
+                '}';
     }
 }

@@ -59,9 +59,13 @@ public class AdminCourseDaoImpl implements AdminCourseDao {
      */
     @Override
     public Course findByCno(String cno) {
-        String sql="select * from course where cno=?";
-        Course course = template.queryForObject(sql, new BeanPropertyRowMapper<Course>(Course.class), cno);
-        return course;
+        try {
+            String sql="select * from course where cno=?";
+            return template.queryForObject(sql, new BeanPropertyRowMapper<Course>(Course.class), cno);
+        }catch (Exception e){
+            return null;
+        }
+
     }
 
     /**

@@ -8,10 +8,10 @@
 		<title>修改课程</title>
 		<meta name="description" content="Blueprint: Tooltip Menu" />
 		<meta name="keywords" content="Tooltip Menu, navigation, tooltip, menu, css, web development, template" />
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="../css/component.css" />
-		<link rel="stylesheet" type="text/css" href="../css/admin.css">
-		<script src="../js/modernizr.custom.js"></script>
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/component.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin.css">
+		<script src="${pageContext.request.contextPath}/js/modernizr.custom.js"></script>
 	</head>
 	<body>
 		<%@include file="admin_navigator.jsp"%>
@@ -44,10 +44,10 @@
 
 
 		<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
-    <script src="../js/jquery-3.0.0.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.0.0.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    <script src="../js/bootstrap.min.js"></script>
-		<script src="../js/cbpTooltipMenu.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.min.js"></script>
+		<script src="${pageContext.request.contextPath}/js/cbpTooltipMenu.min.js"></script>
 		<script>
 			var menu = new cbpTooltipMenu( document.getElementById( 'cbp-tm-menu' ) );
 		</script>

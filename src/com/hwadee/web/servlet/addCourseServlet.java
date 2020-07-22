@@ -32,9 +32,13 @@ public class addCourseServlet extends HttpServlet {
             e.printStackTrace();
         }
         AdminCourseService service=new AdminCourseServiceImpl();
-        service.add(course);
+        boolean isAdd=service.add(course);
 //        System.out.println("添加成功");
-        response.sendRedirect(request.getContextPath()+"/ListCourseServlet");
+        if (isAdd){
+            response.sendRedirect(request.getContextPath()+"/ListCourseServlet");
+        }else {
+            response.sendRedirect(request.getContextPath()+"/admin/admin_add_failed.jsp?aId=2");
+        }
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

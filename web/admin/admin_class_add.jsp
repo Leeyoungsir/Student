@@ -8,9 +8,9 @@
 		<title>添加公告</title>
 		<meta name="description" content="Blueprint: Tooltip Menu" />
 		<meta name="keywords" content="Tooltip Menu, navigation, tooltip, menu, css, web development, template" />
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css" />
-		<link rel="stylesheet" type="text/css" href="../css/component.css" />
-		<link rel="stylesheet" type="text/css" href="../css/admin.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/component.css" />
+		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin.css" />
 		<script src="../js/modernizr.custom.js"></script>
 	</head>
 	<body>

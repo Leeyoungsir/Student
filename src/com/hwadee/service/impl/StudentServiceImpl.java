@@ -22,8 +22,15 @@ public class StudentServiceImpl implements StudentService {
      * @param student
      */
     @Override
-    public void add(Student student) {
-        studentDao.add(student);
+    public boolean add(Student student) {
+        Student stu = studentDao.findBySno(Integer.parseInt(student.getSno()));
+        if (stu==null){
+            studentDao.add(student);
+        }else {
+            return false;
+        }
+        return true;
+
     }
 
     /**

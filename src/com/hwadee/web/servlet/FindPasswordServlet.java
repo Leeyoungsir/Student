@@ -1,7 +1,6 @@
 package com.hwadee.web.servlet;
 
-import com.hwadee.model.UserInfo;
-import com.hwadee.service.impl.LoginService;
+import com.hwadee.service.impl.FindPasswordService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -11,18 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
+
 import java.sql.SQLException;
 
-
-/**
- * @Author xuiexizhang
- * @Description
- * @Date Create in 9:50 2020/7/18
- */
-
-@WebServlet("/LoginServlet")
-public class LoginServlet extends HttpServlet {
-
+@WebServlet("/FindPassword")
+public class FindPasswordServlet extends HttpServlet {
+    @Override
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         PrintWriter out = response.getWriter();
         //获取数据
@@ -30,6 +23,7 @@ public class LoginServlet extends HttpServlet {
         String code = request.getParameter("code");
         System.out.println("code" + code);
         String username=request.getParameter("username");
+        String sno=request.getParameter("sno");
         String password=request.getParameter("password");
         String scode = (String) session.getAttribute("CHECKCODE_SERVER");
         //判断验证码是否正确
@@ -40,33 +34,25 @@ public class LoginServlet extends HttpServlet {
             return;
         }
         //user传个service层
-        LoginService service=new LoginService();
-        UserInfo user=null;
+        FindPasswordService service=new FindPasswordService();
+        Boolean r = false;
         try {
-            user=service.login(username, password);
+            r=service.findPassword(username, password,sno);
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        if(user!=null){
-            //登录成功
-            //将登录的用户的user对象存到session中
-            String autoLogin=request.getParameter("autoLogin");
-            session.setAttribute("user", user);//左边为名字，右边为值
-            //管理员学生管理页面
-            if("admin".equals(user.getLevel() )){
-                response.sendRedirect(request.getContextPath()+"/admin/admin_index.jsp");
-            }
-            //学生选课界面
-            if("stu".equals(user.getLevel())){
-                response.sendRedirect(request.getContextPath()+"/welcome_student.jsp");
-            }
+        if(r==true){
+            out.println("修改密码成功，5秒返回登入界面");
+            response.setHeader("refresh", "5,url="+request.getContextPath()+"/login/signin.jsp");
+            return;
 
         }else{
             //登录失败
-            System.out.println("登入失败");
-            request.getRequestDispatcher("/login/false.jsp").forward(request, response);
+            out.println("修改密码失败，5秒回到修改密码界面");
+            response.setHeader("refresh", "5,url="+request.getContextPath()+"/login/FindPassword.jsp");
         }
+
 
 
     }

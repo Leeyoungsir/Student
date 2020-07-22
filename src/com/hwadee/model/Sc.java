@@ -8,7 +8,7 @@ public class Sc implements Serializable {
 
 	private String sno;//学号
 	private String sname;//姓名
-
+    private String cteacher;//执教老师
 	private String cno;//课程号
 	private String cname;//课程名称
 	private double grade;//成绩
@@ -25,7 +25,7 @@ public class Sc implements Serializable {
 	}
 
 	public String getSno() {
-		return sno;
+		return this.sno;
 	}
 
 	public void setSno(String sno) {
@@ -64,11 +64,20 @@ public class Sc implements Serializable {
 		this.grade = grade;
 	}
 
+	public String getCteacher() {
+		return cteacher;
+	}
+
+	public void setCteacher(String cteacher) {
+		this.cteacher = cteacher;
+	}
+
 	@Override
 	public String toString() {
 		return "Sc{" +
 				"sno='" + sno + '\'' +
 				", sname='" + sname + '\'' +
+				", cteacher='" + cteacher + '\'' +
 				", cno='" + cno + '\'' +
 				", cname='" + cname + '\'' +
 				", grade=" + grade +

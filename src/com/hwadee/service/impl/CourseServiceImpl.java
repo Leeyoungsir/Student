@@ -94,7 +94,7 @@ public class CourseServiceImpl implements CourseService {
         for (Course course : selectedCourse) {
             cnos.add(course.getCno());
         }
-        List<Course> notSelectCourse = courseDao.findNotSelectCourse(cnos);
+        List<Course> notSelectCourse = courseDao.findNotSelectCourse(currentPage,rows,cnos);
         coursePageBean.setList(notSelectCourse);
         int totalpage=(totalcount%rows)==0 ? (totalcount/rows):(totalcount/rows)+1;
         coursePageBean.setTotalPage(totalpage);

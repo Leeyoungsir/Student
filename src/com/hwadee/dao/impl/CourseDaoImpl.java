@@ -90,10 +90,10 @@ public class CourseDaoImpl  implements CourseDao {
      * @return
      */
     @Override
-    public List<Course> findNotSelectCourse(List<String> cnos) {
+    public List<Course> findNotSelectCourse(int currentPage, int rows,List<String> cnos) {
         if (cnos.isEmpty()){
-            String sql="select * from course";
-            return template.query(sql,new BeanPropertyRowMapper<>(Course.class));
+            String sql="select * from course limit ?,?";
+            return template.query(sql,new BeanPropertyRowMapper<>(Course.class),currentPage,rows);
         }else {
             String sql="select * from course where cno not in(";
             StringBuffer sb = new StringBuffer(sql);
@@ -104,8 +104,9 @@ public class CourseDaoImpl  implements CourseDao {
                     sb.append("?)");
                 }
             }
+            sb.append(" limit ?,? ");
 //            System.out.println(sb);
-            List<Course> courses = template.query(sb.toString(), new BeanPropertyRowMapper<>(Course.class), cnos.get(cnos.size()-1));
+            List<Course> courses = template.query(sb.toString(), new BeanPropertyRowMapper<>(Course.class), cnos.get(cnos.size()-1),currentPage,rows);
 //            System.out.println(courses);
             return courses;
         }

@@ -5,7 +5,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>所有课程</title>
+		<title>课程列表</title>
 		<meta name="description" content="Blueprint: Tooltip Menu" />
 		<meta name="keywords" content="Tooltip Menu, navigation, tooltip, menu, css, web development, template" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css" />
@@ -55,17 +55,17 @@
 
 					</c:if>
 
-					<a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${pageBean.currentPage-1}&rows=10" aria-label="Previous">
+					<a href="${pageContext.request.contextPath}/ListCourseServlet?currentpage=${pageBean.currentPage-1}&rows=10" aria-label="Previous">
 						<span aria-hidden="true">&laquo;</span>
 					</a>
 
 				</li>
 				<c:forEach begin="1" end="${pageBean.totalPage}" var="i">
 					<c:if test="${pageBean.currentPage==i}">
-						<li class="active"><a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${i}&rows=10">${i}</a></li>
+						<li class="active"><a href="${pageContext.request.contextPath}/ListCourseServlet?currentpage=${i}&rows=10">${i}</a></li>
 					</c:if>
 					<c:if test="${pageBean.currentPage!=i}">
-						<li ><a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${i}&rows=10">${i}</a></li>
+						<li ><a href="${pageContext.request.contextPath}/ListCourseServlet?currentpage=${i}&rows=10">${i}</a></li>
 					</c:if>
 
 				</c:forEach>
@@ -76,7 +76,7 @@
 					<c:if test="${pageBean.currentPage!=pageBean.totalPage}">
 				<li >
 					</c:if>
-					<a href="${pageContext.request.contextPath}/ListStudentServlet?currentpage=${pageBean.currentPage==pageBean.totalPage? pageBean.currentPage:pageBean.currentPage+1}&rows=10" aria-label="Previous">
+					<a href="${pageContext.request.contextPath}/ListCourseServlet?currentpage=${pageBean.currentPage==pageBean.totalPage? pageBean.currentPage:pageBean.currentPage+1}&rows=10" aria-label="Previous">
 						<span aria-hidden="true">&raquo;</span>
 					</a>
 

@@ -12,10 +12,11 @@
     <title>Title</title>
 </head>
 <body>
+<%@include file="admin_navigator.jsp"%>
 添加失败！！！
-<c:if test="${requestScope.aId==1}"><a href="${pageContext.request.contextPath}/ListStudentServlet">返回学生管理</a></c:if>
-<c:if test="${requestScope.aId==2}"><a href="${pageContext.request.contextPath}/ListCourseServlet">返回课程管理</a></c:if>
-<c:if test="${requestScope.aId==3}"><a href="${pageContext.request.contextPath}/ListClassServlet">返回班级管理</a></c:if>
+<c:if test="${aId==1}"><a href="${pageContext.request.contextPath}/ListStudentServlet">返回学生管理</a></c:if>
+<c:if test="${aId==2}"><a href="${pageContext.request.contextPath}/ListCourseServlet">返回课程管理</a></c:if>
+<c:if test="${aId==3}"><a href="${pageContext.request.contextPath}/ListClassServlet">返回班级管理</a></c:if>
 
 </body>
 </html>

@@ -9,7 +9,7 @@
 <html>
 <head>
     <title>Title</title>
-    <title>首页</title>
+    <title>个人信息</title>
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/component.css" />
     <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/admin.css">

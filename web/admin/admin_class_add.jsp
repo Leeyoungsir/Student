@@ -5,7 +5,7 @@
 		<meta charset="UTF-8" />
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-		<title>添加公告</title>
+		<title>添加班级</title>
 		<meta name="description" content="Blueprint: Tooltip Menu" />
 		<meta name="keywords" content="Tooltip Menu, navigation, tooltip, menu, css, web development, template" />
 		<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/bootstrap.css" />

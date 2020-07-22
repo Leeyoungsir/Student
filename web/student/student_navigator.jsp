@@ -19,6 +19,7 @@
         <div class="right">
             <span class="userinfo">${sessionScope.user.username}</span>
             <span><a href="${pageContext.request.contextPath}/student/student_index.jsp">首页</a> </span>
+            <span><a href="${pageContext.request.contextPath}/LoginOutServlet">退出登陆</a> </span>
         </div>
     </div>
     <div class="tabbar">

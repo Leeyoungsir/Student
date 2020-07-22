@@ -13,8 +13,8 @@
             <li><a href="${pageContext.request.contextPath}/admin/admin_index.jsp">首页</a></li>
             <li>
                 <a href="${pageContext.request.contextPath}/admin/admin_detail.jsp">管理员--${sessionScope.user.username}</a>
-
             </li>
+            <li><a href="${pageContext.request.contextPath}/LoginOutServlet">退出登陆</a></li>
         </ul>
     </nav><!-- 导航栏 -->
 </header>

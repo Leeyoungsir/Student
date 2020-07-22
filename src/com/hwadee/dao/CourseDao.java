@@ -50,7 +50,7 @@ public interface  CourseDao {
   * @param cnos
   * @return
   */
- List<Course> findNotSelectCourse(List<String> cnos);
+ List<Course> findNotSelectCourse(int currentPage, int rows,List<String> cnos);
 
  /**
   * 没有选修课程的数量

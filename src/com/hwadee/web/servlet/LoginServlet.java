@@ -59,7 +59,7 @@ public class LoginServlet extends HttpServlet {
             }
             //学生选课界面
             if("stu".equals(user.getLevel())){
-                response.sendRedirect(request.getContextPath()+"/welcome_student.jsp");
+                response.sendRedirect(request.getContextPath()+"/student/student_index.jsp");
             }
 
         }else{

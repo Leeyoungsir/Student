@@ -9,9 +9,16 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/return.css">
 </head>
-<body>
-<p> 登入失败！！请重新输入账号、密码</p>
-<p><a href="${pageContext.request.contextPath}/login/signin.jsp">重新登入</a></p>
+<main>
+    <div class="containerr">
+        <div class="message">
+            <h1 class="h1">登入失败！！请检查账号和密码</h1>
+            <h3 class="h3"><a href="${pageContext.request.contextPath}/login/signin.jsp">重新登入</a></h3>
+        </div>
+    </div>
+    </div>
+</main>
 </body>
 </html>

@@ -9,10 +9,16 @@
 <html>
 <head>
     <title>Title</title>
+    <link rel="stylesheet" type="text/css" href="../css/return.css">
 </head>
 <body>
-
-  <p>success</p>
-
+<main>
+    <div class="containerr">
+        <div class="message">
+            <h1 class="h1">SUCCESS</h1>
+        </div>
+    </div>
+    </div>
+</main>
 </body>
 </html>

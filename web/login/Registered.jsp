@@ -10,46 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册界面</title>
-    <style>
-        html,body{
-            height: 100%
-        }
-        body{
-            display: flex;
-            justify-content: center;
-            align-content: center;
-            background: url(../images/1002025.jpg) no-repeat center/cover;
-        }
-        .wrap{
-            width: 480px;
-            height: 600px;
-            background-color:#678E9F;
-            margin: auto;
-            border-radius: 8px;
-        }
-        .title{
-            line-height: 80px;
-            color: #000000;
-            text-align: center;
-            font-size: 2em;
-        }
-        .wrap input{
-            border:1px solid red;
-            text-indent: 0px;
-            border-raduis: 5px ;
-            outline: none;
-        }
-        .Registered-content input[type="button"]{
-            width:64px;
-            height:32px;
-            line-height:18px;
-            border:1px solid red;
-            margin:4px 0 0 10px;
-            background-color: #678E9F;
-            text-indent: 0;
-            color: #000000;
-        }
-    </style>
+    <link rel="stylesheet" type="text/css" href="../css/login&registered.css">
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
         function formatDateTime() {
@@ -94,17 +55,34 @@
     </script>
 </head>
 <body>
-<div class="wrap">
-    <h1 class="title">用户注册界面</h1>
-    <form class="Registered-content" action="${pageContext.request.contextPath}/RegisterServlet" method="post">
-        <input id="Uid" type="hidden" name="id">
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;用户名: <input id="name" type="text" name="username"/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;密码: <input id="pwd" type="password"  name="password"/></p>
-        <p>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;学号: <input id="id" type="text" name="sno" /></p>
-        <p>确认密码: <input id="pwd1" type="password"/></p>
-
-        <p><input type="button" value="提交" id="check"></input></p>
-    </form>
-</div>
+<script type ="text/javascript">
+    function refresh() {
+        loginForm.imgValidate.src="${pageContext.request.contextPath}/checkCode?id="+Math.random();
+    }
+</script >
+<header>
+    <nav>
+        <ul>
+            <a href=signin.jsp><li>登录</li></a>
+            <a href="Registered.jsp"><li>注册</li></a>
+        </ul>
+    </nav>
+</header>
+<main>
+    <div class="container">
+        <img class="login_bg" src="../image/login.png">
+        <form name="loginForm" class="form" action="${pageContext.request.contextPath}/RegisterServlet" method="post">
+            <h3>学生信息管理系统</h3>
+            <input id="Uid" type="hidden" name="id">
+            <input id="name" type="text" autofocus="autofocus" name="username" value placeholder="用户名" required="required">
+            <input id="id" type="text" name="sno" value placeholder="学号" required="required">
+            <input id="pwd" type="password" name="password" value placeholder="密码" required="required">
+            <input id="pwd1" type="password"  value placeholder="确认密码" required="required">
+            <div><input type="text" name="code" size="10"value placeholder="验证码" >
+                <img name="imgValidate" border=0 src="${pageContext.request.contextPath}/checkCode" onclick="refresh()"></div>
+            <input id="submit" type="submit" onclick="return check()" value="提交" id="Button">
+        </form>
+    </div>
+</main>
 </body>
 </html>

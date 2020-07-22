@@ -11,6 +11,7 @@ public class PageBean<T> {
     List<T> list;//每页的数据list集合
     int currentPage;//当前页面
     int rows;//每页显示的条数
+    String sno;//
 
     @Override
     public String toString() {
@@ -20,6 +21,7 @@ public class PageBean<T> {
                 ", list=" + list +
                 ", currentPage=" + currentPage +
                 ", rows=" + rows +
+                ", sno='" + sno + '\'' +
                 '}';
     }
 
@@ -61,5 +63,13 @@ public class PageBean<T> {
 
     public void setRows(int rows) {
         this.rows = rows;
+    }
+
+    public String getSno() {
+        return sno;
+    }
+
+    public void setSno(String sno) {
+        this.sno = sno;
     }
 }

@@ -9,7 +9,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
@@ -23,9 +25,22 @@ import java.util.Map;
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
     public  void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        request.setCharacterEncoding("UTF-8");
-            System.out.println("ok");
+        PrintWriter out = response.getWriter();
         Map<String, String[]> properties = request.getParameterMap();
+        HttpSession session = request.getSession();
+        String scode = (String)session.getAttribute("CHECKCODE_SERVER");
+        String code = request.getParameter("code");
+        System.out.println("code =" + code);
+        System.out.println("scode =" + scode);
+
+
+        //判断验证码是否正确
+        //不区分大小写
+        if(code == null || !code.equalsIgnoreCase(scode)){
+            out.println("验证码错误请重新输入");
+            response.setHeader("refresh", "5,url="+request.getContextPath()+"/login/Registered.jsp");
+            return;
+        }
         UserInfo user=new UserInfo();
         try {
             BeanUtils.populate(user, properties);

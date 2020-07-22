@@ -36,6 +36,11 @@
     </script>
 </head>
 <body>
+<script type ="text/javascript">
+    function refresh() {
+        loginForm.imgValidate.src="${pageContext.request.contextPath}/checkCode?id="+Math.random();
+    }
+</script >
 <header>
     <nav>
         <ul>
@@ -47,14 +52,16 @@
 </header>
 <main>
     <div class="container">
-        <img class="login_bg" src="../image/login.png">
-        <form class="form" action="#" method="post">
+        <img class="login_bg" src="${pageContext.request.contextPath}/images/login.png">
+        <form  name="loginForm" class="form" action="${pageContext.request.contextPath}/FindPassword" method="post">
             <h3>找回密码</h3>
             <input id="name" type="text" autofocus="autofocus" name="username" value placeholder="用户名" required="required">
             <input id="id" type="text" name="sno" value placeholder="学号" required="required">
             <input id="pwd" type="password" name="password" value placeholder="密码" required="required">
             <input id="pwd1" type="password"  value placeholder="确认密码" required="required">
-            <div><input type="text" name="code" size="10"value placeholder="验证码" ><img border=0 src=" "></div>
+            <div><input type="text" name="code" size="10"value placeholder="验证码" >
+                <img name="imgValidate" border=0 src="${pageContext.request.contextPath}/checkCode" onclick="refresh()">
+            </div>
             <input id="submit" type="submit" onclick="return check()" value="提交" id="Button">
         </form>
     </div>

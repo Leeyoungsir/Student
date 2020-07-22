@@ -10,7 +10,7 @@
 <head>
     <meta charset="UTF-8">
     <title>用户注册界面</title>
-    <link rel="stylesheet" type="text/css" href="../css/login&registered.css">
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/login&registered.css">
     <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
     <script>
         function formatDateTime() {
@@ -63,14 +63,14 @@
 <header>
     <nav>
         <ul>
-            <a href=signin.jsp><li>登录</li></a>
-            <a href="Registered.jsp"><li>注册</li></a>
+            <a href="${pageContext.request.contextPath}/login/signin.jsp"><li>登录</li></a>
+            <a href="${pageContext.request.contextPath}/login/Registered.jsp"><li>注册</li></a>
         </ul>
     </nav>
 </header>
 <main>
     <div class="container">
-        <img class="login_bg" src="../image/login.png">
+        <img class="login_bg" src="../images/login.png">
         <form name="loginForm" class="form" action="${pageContext.request.contextPath}/RegisterServlet" method="post">
             <h3>学生信息管理系统</h3>
             <input id="Uid" type="hidden" name="id">
@@ -79,7 +79,8 @@
             <input id="pwd" type="password" name="password" value placeholder="密码" required="required">
             <input id="pwd1" type="password"  value placeholder="确认密码" required="required">
             <div><input type="text" name="code" size="10"value placeholder="验证码" >
-                <img name="imgValidate" border=0 src="${pageContext.request.contextPath}/checkCode" onclick="refresh()"></div>
+                <img name="imgValidate" border=0 src="${pageContext.request.contextPath}/checkCode" onclick="refresh()">
+            </div>
             <input id="submit" type="submit" onclick="return check()" value="提交" id="Button">
         </form>
     </div>

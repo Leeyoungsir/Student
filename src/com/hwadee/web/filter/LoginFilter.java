@@ -16,34 +16,37 @@ import java.io.PrintWriter;
  * @Date Create in 9:07 2020/7/21
  */
 
-@WebFilter(filterName = "LoginFilter",urlPatterns = "*.jsp")
+@WebFilter(filterName = "LoginFilter",urlPatterns = "/*")
 public class LoginFilter implements Filter {
     public void destroy() {
     }
 
     public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain) throws ServletException, IOException {
 
-        HttpServletRequest request = (HttpServletRequest)req;
-        HttpServletResponse response = (HttpServletResponse)resp;
-        PrintWriter out = response.getWriter();
-        //定义未登入允许访问的页面
-        String rurl = "/,/signin.jsp,/FindPassword.jsp,/Registered.jsp,/LoginServlet";
+        //1.获取资源请求路径
+        HttpServletRequest request=(HttpServletRequest)req;
+        String requestURI = request.getRequestURI();
+        if(requestURI.contains("/login/") || requestURI.contains("/loginServlet") || requestURI.contains("/css/") || requestURI.contains("/js/") || requestURI.contains("/fonts/") || requestURI.contains("/CheckCodeServlet"))
+        {
+            //放行
+            chain.doFilter(request,resp);
+        }
+        else
+        {
+            Object user = request.getSession().getAttribute("user");
+            if(user==null)
+            {
+                //跳转到登录页面
+                request.setAttribute("login_msg","你尚未登录，请登录！");
+                request.getRequestDispatcher("/login/signin.jsp").forward(request,resp);
+            }
+            else
+            {
+//                放行
+                chain.doFilter(request,resp);
 
-        String requestURl = request.getRequestURI().toString();
-        String url = requestURl.substring(requestURl.lastIndexOf("/"));
-
-        //判断是否拦截
-        if(rurl.indexOf(url)==-1 ){
-            HttpSession session = request.getSession();
-            UserInfo user = (UserInfo) session.getAttribute("user");
-            if(user ==null){
-                out.println("你还未登入，3秒回转到登入");
-                response.setHeader("refresh", "3,url="+request.getContextPath()+"/login/signin.jsp");
-                return;
             }
         }
-
-        chain.doFilter(req, resp);
     }
 
     public void init(FilterConfig config) throws ServletException {

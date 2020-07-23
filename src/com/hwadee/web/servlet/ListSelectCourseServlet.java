@@ -46,7 +46,7 @@ public class ListSelectCourseServlet extends HttpServlet {
         }
         CourseService service=new CourseServiceImpl();
         PageBean<Course> pageBean = service.findNotSelectCourse(Integer.parseInt(currentpage), Integer.parseInt(rows), sno);
-        System.out.println(pageBean);
+//        System.out.println(pageBean);
         request.setAttribute("pageBean",pageBean);
         request.getRequestDispatcher("/student/selectCourse.jsp").forward(request, response);
 

@@ -4,6 +4,7 @@ import com.hwadee.dao.ClassDao;
 import com.hwadee.model.Class;
 import com.hwadee.model.Student;
 import com.hwadee.utils.JDBCUtils;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -35,9 +36,13 @@ public class ClassDaoImpl implements ClassDao {
      */
     @Override
     public int FindTotalCount() {
-        String sql="select count(*) from class";
-        Integer integer = template.queryForObject(sql, Integer.class);
-        return integer;
+        try {
+            String sql="select count(*) from class";
+            Integer integer = template.queryForObject(sql, Integer.class);
+            return integer;
+        } catch (DataAccessException e) {
+            return 0;
+        }
     }
 
     /**
@@ -59,8 +64,12 @@ public class ClassDaoImpl implements ClassDao {
      */
     @Override
     public Class findByC_no(String c_no) {
-        String sql="select * from class where c_no=?";
-        Class aClass = template.queryForObject(sql, new BeanPropertyRowMapper<Class>(Class.class), c_no);
-        return aClass;
+        try {
+            String sql="select * from class where c_no=?";
+            Class aClass = template.queryForObject(sql, new BeanPropertyRowMapper<Class>(Class.class), c_no);
+            return aClass;
+        } catch (DataAccessException e) {
+            return null;
+        }
     }
 }

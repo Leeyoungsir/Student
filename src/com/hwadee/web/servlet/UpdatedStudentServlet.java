@@ -33,7 +33,7 @@ public class UpdatedStudentServlet extends HttpServlet {
         }
         StudentService service=new StudentServiceImpl();
         service.update(student);
-        response.sendRedirect(request.getContextPath()+"ListStudentServlet");
+        response.sendRedirect(request.getContextPath()+"/ListStudentServlet");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

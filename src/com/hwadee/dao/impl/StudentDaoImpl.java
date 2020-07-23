@@ -3,6 +3,7 @@ package com.hwadee.dao.impl;
 import com.hwadee.dao.StudentDao;
 import com.hwadee.model.Student;
 import com.hwadee.utils.JDBCUtils;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
 
@@ -108,9 +109,13 @@ public class StudentDaoImpl implements StudentDao {
      */
     @Override
     public Student findBySno(int sno) {
-        String sql="select * from student where sno = ?";
-        Student student = template.queryForObject(sql,new BeanPropertyRowMapper<Student>(Student.class),sno);
-        return student;
+        try {
+            String sql="select * from student where sno = ?";
+            Student student = template.queryForObject(sql,new BeanPropertyRowMapper<Student>(Student.class),sno);
+            return student;
+        } catch (DataAccessException e) {
+            return null;
+        }
     }
 
     /**
@@ -132,8 +137,12 @@ public class StudentDaoImpl implements StudentDao {
      */
     @Override
     public int findByC_no(String c_no) {
-        String sql="select count(*) from student where c_no=?";
-        Integer integer = template.queryForObject(sql, Integer.class,c_no);
-        return integer;
+        try {
+            String sql="select count(*) from student where c_no=?";
+            Integer integer = template.queryForObject(sql, Integer.class,c_no);
+            return integer;
+        } catch (DataAccessException e) {
+            return 0;
+        }
     }
 }

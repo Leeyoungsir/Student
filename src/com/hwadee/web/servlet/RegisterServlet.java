@@ -58,7 +58,8 @@ public class RegisterServlet extends HttpServlet {
             response.sendRedirect(request.getContextPath()+"/login/Return.jsp");
         }else{
             //失败
-            response.sendRedirect(request.getContextPath()+"/login/Registered.jsp");
+            request.setAttribute("reg_msg", "注册失败！！");
+            request.getRequestDispatcher("/login/Registered.jsp").forward(request, response);
         }
     }
 

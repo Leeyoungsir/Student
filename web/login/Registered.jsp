@@ -73,6 +73,10 @@
         <img class="login_bg" src="../images/login.png">
         <form name="loginForm" class="form" action="${pageContext.request.contextPath}/RegisterServlet" method="post">
             <h3>学生信息管理系统</h3>
+            <!-- 出错显示的信息框 -->
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <strong style="color: red">${reg_msg}</strong>
+            </div>
             <input id="Uid" type="hidden" name="id">
             <input id="name" type="text" autofocus="autofocus" name="username" value placeholder="用户名" required="required">
             <input id="id" type="text" name="sno" value placeholder="学号" required="required">

@@ -26,7 +26,7 @@ public class LoginFilter implements Filter {
         //1.获取资源请求路径
         HttpServletRequest request=(HttpServletRequest)req;
         String requestURI = request.getRequestURI();
-        if(requestURI.contains("/login/") || requestURI.contains("/loginServlet") || requestURI.contains("/css/") || requestURI.contains("/js/") || requestURI.contains("/fonts/") || requestURI.contains("/checkCode"))
+        if(requestURI.contains("/login/") || requestURI.contains("/LoginServlet") || requestURI.contains("/css/") || requestURI.contains("/js/") || requestURI.contains("/fonts/") || requestURI.contains("/checkCode"))
         {
             //放行
             chain.doFilter(request,resp);

@@ -15,7 +15,7 @@ import java.io.IOException;
  * @Date Create in 9:07 2020/7/21
  */
 
-@WebFilter(filterName = "LoginFilter",urlPatterns = "")
+@WebFilter(filterName = "LoginFilter",urlPatterns = "/*")
 public class LoginFilter implements Filter {
     public void destroy() {
     }

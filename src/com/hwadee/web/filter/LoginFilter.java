@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
+import java.io.PrintWriter;
 
 /**
  * @Author xuiexizhang
@@ -15,7 +16,7 @@ import java.io.IOException;
  * @Date Create in 9:07 2020/7/21
  */
 
-@WebFilter(filterName = "LoginFilter",urlPatterns = "")
+@WebFilter(filterName = "LoginFilter",urlPatterns = "*.jsp")
 public class LoginFilter implements Filter {
     public void destroy() {
     }
@@ -24,7 +25,7 @@ public class LoginFilter implements Filter {
 
         HttpServletRequest request = (HttpServletRequest)req;
         HttpServletResponse response = (HttpServletResponse)resp;
-
+        PrintWriter out = response.getWriter();
         //定义未登入允许访问的页面
         String rurl = "/,/signin.jsp,/FindPassword.jsp,/Registered.jsp,/LoginServlet";
 
@@ -36,7 +37,8 @@ public class LoginFilter implements Filter {
             HttpSession session = request.getSession();
             UserInfo user = (UserInfo) session.getAttribute("user");
             if(user ==null){
-                response.sendRedirect(request.getContextPath()+"/login/signin.jsp");
+                out.println("你还未登入，3秒回转到登入");
+                response.setHeader("refresh", "3,url="+request.getContextPath()+"/login/signin.jsp");
                 return;
             }
         }
